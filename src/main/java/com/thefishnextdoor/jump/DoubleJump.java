@@ -1,5 +1,8 @@
 package com.thefishnextdoor.jump;
 
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,7 +27,7 @@ public class DoubleJump extends JavaPlugin {
         pluginManager.registerEvents(new PlayerQuit(), this);
         pluginManager.registerEvents(new PlayerChangedWorld(), this);
         pluginManager.registerEvents(new PlayerCommandPreprocess(), this);
-        getCommand("doublejump").setExecutor(new DoubleJumpCommand(this));
+        registerCommand("doublejump", new DoubleJumpCommand(this));
         getLogger().info("Plugin enabled");
     }
 
@@ -38,5 +41,23 @@ public class DoubleJump extends JavaPlugin {
 
     public static Settings getSettings() {
         return settings;
+    }
+
+    private void registerCommand(String commandName, CommandExecutor commandHandler) {
+        if (commandName == null) {
+            throw new IllegalArgumentException("commandName cannot be null");
+        }
+        if (commandHandler == null) {
+            throw new IllegalArgumentException("commandHandler cannot be null");
+        }
+        PluginCommand command = getCommand(commandName);
+        if (command == null) {
+            getLogger().warning("Failed to register command: " + commandName);
+            return;
+        }
+        command.setExecutor(commandHandler);
+        if (commandHandler instanceof TabCompleter) {
+            command.setTabCompleter((TabCompleter) commandHandler);
+        }
     }
 }
