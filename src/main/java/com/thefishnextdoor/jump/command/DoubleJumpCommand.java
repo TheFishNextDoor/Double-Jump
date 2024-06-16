@@ -1,5 +1,6 @@
 package com.thefishnextdoor.jump.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -26,7 +27,9 @@ public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
-            List<String> list = List.of("enable", "disable");
+            ArrayList<String> list = new ArrayList<>();
+            list.add("enable");
+            list.add("disable");
             if (sender.hasPermission(RELOAD_PERMISSION)) {
                 list.add("reload");
             }
@@ -65,10 +68,10 @@ public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
         }
         playerProfile.setWantsDoubleJump(enableDoubleJump);
         if (enableDoubleJump) {
-            player.sendMessage(ChatColor.GREEN + "Double jump enabled.");
+            player.sendMessage(ChatColor.GREEN + "Double jump enabled");
         }
         else {
-            player.sendMessage(ChatColor.DARK_GREEN + "Double jump disabled.");
+            player.sendMessage(ChatColor.DARK_GREEN + "Double jump disabled");
         }
         return true;
     }
