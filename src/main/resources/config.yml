@@ -1,0 +1,6 @@
+enabled-by-default: true # Whether jump should be enabled on join for users with the permission
+forward-velocity: 0.9 # The velocity you will be launched forward when you double jump
+up-velocity: 0.8 # The velocity you will be launched up when you double jump
+fall-damage-reduction: 5.0 # 1.0 = half a heart or 1 block of fall damage
+disable-on-command: # Double jump will be disabled when the player executes any of these commands (put fly commands here to prevent conflicts)
+- "fly"

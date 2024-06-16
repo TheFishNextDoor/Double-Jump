@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
+import com.thefishnextdoor.jump.DoubleJump;
 import com.thefishnextdoor.jump.PlayerProfile;
 
 public class EntityDamage implements Listener {
@@ -26,7 +27,7 @@ public class EntityDamage implements Listener {
             return;
         }
         double damage = event.getDamage();
-        damage -= 5.0;
+        damage -= DoubleJump.getSettings().FALL_DAMAGE_REDUCTION;
         if (damage <= 0.0) {
             event.setCancelled(true);
         }

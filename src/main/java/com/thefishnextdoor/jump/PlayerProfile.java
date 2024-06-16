@@ -26,7 +26,7 @@ public class PlayerProfile {
             throw new IllegalArgumentException("Player cannot be null");
         }
         this.uuid = player.getUniqueId();
-        this.wantsDoubleJump = !player.isFlying();
+        this.wantsDoubleJump = !player.isFlying() && DoubleJump.getSettings().ENABLED_BY_DEFAULT;
         checkPermissions();
         playerProfiles.put(uuid, this);
     }

@@ -11,3 +11,8 @@ commands:
     permission: doublejump.use
     aliases:
     - jump
+permissions:
+  doublejump.use:
+    description: Use the double jump ability
+  doublejump.reload:
+    description: Reload the configuration

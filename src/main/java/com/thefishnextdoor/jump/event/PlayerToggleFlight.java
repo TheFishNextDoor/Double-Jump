@@ -6,7 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
+import com.thefishnextdoor.jump.DoubleJump;
 import com.thefishnextdoor.jump.PlayerProfile;
+import com.thefishnextdoor.jump.Settings;
 
 public class PlayerToggleFlight implements Listener {
 
@@ -21,7 +23,8 @@ public class PlayerToggleFlight implements Listener {
         }
         PlayerProfile playerProfile = PlayerProfile.get(player);
         if (playerProfile.isDoubleJumpReady()) {
-            player.setVelocity(player.getLocation().getDirection().multiply(0.9).setY(0.8));
+            Settings settings = DoubleJump.getSettings();
+            player.setVelocity(player.getLocation().getDirection().multiply(settings.FORWARD_VELOCITY).setY(settings.UP_VELOCITY));
             playerProfile.setDoubleJumpReady(false);
             event.setCancelled(true);
             player.setAllowFlight(false);
