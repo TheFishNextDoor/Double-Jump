@@ -1,0 +1,13 @@
+main: com.thefishnextdoor.jump.DoubleJump
+name: DoubleJump
+version: 0.0.1
+api-version: 1.15
+author: TheFishNextDoor
+description: Jump then jump again
+commands:
+  doublejump:
+    description: Toggle double jump
+    usage: /doublejump [enable|disable]
+    permission: doublejump.use
+    aliases:
+    - jump
