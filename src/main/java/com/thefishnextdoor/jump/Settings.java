@@ -1,9 +1,13 @@
 package com.thefishnextdoor.jump;
 
 import java.util.HashSet;
+import java.util.logging.Logger;
 
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.thefishnextdoor.jump.toolkit.EnumTools;
 
 public class Settings {
 
@@ -12,6 +16,9 @@ public class Settings {
     public final double UP_VELOCITY;
     public final double FALL_DAMAGE_REDUCTION;
     public final HashSet<String> DISABLE_ON_COMMAND = new HashSet<>();
+    public final Sound SOUND;
+    public final float SOUND_VOLUME;
+    public final float SOUND_PITCH;
 
     public Settings(DoubleJump plugin) {
         FileConfiguration config = getPluginConfig(plugin);
@@ -20,6 +27,16 @@ public class Settings {
         UP_VELOCITY = config.getDouble("up-velocity");
         FALL_DAMAGE_REDUCTION = config.getDouble("fall-damage-reduction");
         DISABLE_ON_COMMAND.addAll(config.getStringList("disable-on-command"));
+        
+        String soundName = config.getString("sound.name");
+        SOUND = EnumTools.fromString(Sound.class, soundName);
+        if (SOUND == null && !soundName.isEmpty()) {
+            Logger logger = plugin.getLogger();
+            logger.warning("Invalid sound name: " + soundName);
+            logger.warning("Valid sound names: " + EnumTools.allStrings(Sound.class));
+        }
+        SOUND_VOLUME = (float) config.getDouble("sound.volume");
+        SOUND_PITCH = (float) config.getDouble("sound.pitch");
     }
 
     private static FileConfiguration getPluginConfig(JavaPlugin plugin) {

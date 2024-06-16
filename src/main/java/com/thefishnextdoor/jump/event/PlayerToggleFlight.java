@@ -28,6 +28,9 @@ public class PlayerToggleFlight implements Listener {
             playerProfile.setDoubleJumpReady(false);
             event.setCancelled(true);
             player.setAllowFlight(false);
+            if (settings.SOUND != null) {
+                player.getWorld().playSound(player.getLocation(), settings.SOUND, (float) settings.SOUND_VOLUME, (float) settings.SOUND_PITCH);
+            }
         }
     }
 }
