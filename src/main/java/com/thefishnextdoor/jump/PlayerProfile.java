@@ -13,7 +13,11 @@ public class PlayerProfile {
 
     private final UUID uuid;
 
-    private boolean doubleJumpEnabled = true;
+    private boolean doubleJumpEnabled = false;
+
+    private boolean wantsDoubleJump;
+
+    private boolean doubleJumpPermission = false;
 
     private boolean doubleJumpReady = false;
 
@@ -22,40 +26,57 @@ public class PlayerProfile {
             throw new IllegalArgumentException("Player cannot be null");
         }
         this.uuid = player.getUniqueId();
+        this.wantsDoubleJump = !player.isFlying();
         checkPermissions();
         playerProfiles.put(uuid, this);
     }
 
-    public boolean isDoubleJumpEnabled() {
+    public Optional<Player> getPlayer() {
+        return Optional.ofNullable(Bukkit.getPlayer(uuid));
+    }
+
+    public boolean doubleJumpEnabled() {
         return doubleJumpEnabled;
     }
 
-    public void setDoubleJumpEnabled(boolean doubleJumpEnabled) {
-        if (this.doubleJumpEnabled == doubleJumpEnabled) {
-            return;
-        }
-        this.doubleJumpEnabled = doubleJumpEnabled;
-        if (!doubleJumpEnabled) {
+    public boolean wantsDoubleJump() {
+        return wantsDoubleJump;
+    }
+
+    public void setWantsDoubleJump(boolean wantsDoubleJump) {
+        this.wantsDoubleJump = wantsDoubleJump;
+        if (wantsDoubleJump) {
             getPlayer().ifPresent(player -> player.setAllowFlight(false));
         }
+        setDoubleJumpStatus();
+    }
+
+    public void checkPermissions() {
+        Optional<Player> player = getPlayer();
+        if (!player.isPresent()) {
+            return;
+        }
+        doubleJumpPermission = player.get().hasPermission("doublejump.use");
+        setDoubleJumpStatus();
     }
 
     public boolean isDoubleJumpReady() {
-        return doubleJumpReady;
+        return doubleJumpEnabled && doubleJumpReady;
     }
 
     public void setDoubleJumpReady(boolean doubleJumpReady) {
         this.doubleJumpReady = doubleJumpReady;
     }
 
-    public void checkPermissions() {
-        if (doubleJumpEnabled) {
-            getPlayer().ifPresent(player -> setDoubleJumpEnabled(player.hasPermission("doublejump")));
-        }   
-    }
-
-    public Optional<Player> getPlayer() {
-        return Optional.ofNullable(Bukkit.getPlayer(uuid));
+    private void setDoubleJumpStatus() {
+        boolean shouldBeEnabled = doubleJumpPermission && wantsDoubleJump;
+        if (this.doubleJumpEnabled == shouldBeEnabled) {
+            return;
+        }
+        this.doubleJumpEnabled = shouldBeEnabled;
+        if (!doubleJumpEnabled) {
+            getPlayer().ifPresent(player -> player.setAllowFlight(false));
+        }
     }
 
     public static PlayerProfile get(Player player) {

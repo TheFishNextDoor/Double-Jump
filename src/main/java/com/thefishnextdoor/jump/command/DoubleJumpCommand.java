@@ -32,7 +32,7 @@ public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
         PlayerProfile playerProfile = PlayerProfile.get(player);
         boolean enableDoubleJump;
         if (args.length == 0) {
-            enableDoubleJump = !playerProfile.isDoubleJumpEnabled();
+            enableDoubleJump = !playerProfile.wantsDoubleJump();
         }
         else {
             if (args[0].equalsIgnoreCase("enable")) {
@@ -45,7 +45,7 @@ public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
                 return false;
             }
         }
-        playerProfile.setDoubleJumpEnabled(enableDoubleJump);
+        playerProfile.setWantsDoubleJump(enableDoubleJump);
         if (enableDoubleJump) {
             player.sendMessage(ChatColor.GREEN + "Double jump enabled.");
         }

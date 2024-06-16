@@ -17,7 +17,7 @@ public class PlayerCommandPreprocess implements Listener {
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
         String message = event.getMessage().toLowerCase().replaceFirst("/", "");
         if (commands.contains(message)) {
-            PlayerProfile.get(event.getPlayer()).setDoubleJumpEnabled(false);
+            PlayerProfile.get(event.getPlayer()).setWantsDoubleJump(false);
         }
     }
 }

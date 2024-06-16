@@ -22,7 +22,7 @@ public class EntityDamage implements Listener {
         }
         Player player = (Player) entity;
         PlayerProfile playerProfile = PlayerProfile.get(player);
-        if (!playerProfile.isDoubleJumpEnabled()) {
+        if (!playerProfile.doubleJumpEnabled()) {
             return;
         }
         double damage = event.getDamage();

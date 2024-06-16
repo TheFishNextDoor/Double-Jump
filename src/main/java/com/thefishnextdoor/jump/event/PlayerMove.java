@@ -13,9 +13,6 @@ public class PlayerMove implements Listener {
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         PlayerProfile playerProfile = PlayerProfile.get(player);
-        if (!playerProfile.isDoubleJumpEnabled()) {
-            return;
-        }
         if (playerProfile.isDoubleJumpReady()) {
             if (!player.getAllowFlight()) {
                 player.setAllowFlight(true);
