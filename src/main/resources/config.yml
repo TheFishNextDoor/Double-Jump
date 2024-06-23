@@ -5,6 +5,7 @@ fall-damage-reduction: 5.0 # 1.0 = half a heart or 1 block of fall damage
 disable-on-command: # Double jump will be disabled when the player executes any of these commands (put fly commands here to prevent conflicts)
 - "fly"
 sound:
-  name: 'ENTITY_BAT_TAKEOFF' # The sound that will be played when you double jump, leave empty to disable. You can find a list of sounds here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+  enabled: true # Whether a sound should be played when you double jump
+  name: 'ENTITY_BAT_TAKEOFF' # The sound that will be played when you double jump. You can find a list of sounds here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
   volume: 0.5
   pitch: 1.0

@@ -21,19 +21,4 @@ public class EnumTools {
 
         return null;
     }
-
-    public static String allStrings(Class<? extends Enum<?>> enumClass) {
-        if (enumClass == null) {
-            throw new IllegalArgumentException("Enum class cannot be null");
-        }
-
-        StringBuilder builder = new StringBuilder();
-        for (Enum<?> constant : enumClass.getEnumConstants()) {
-            if (builder.length() > 0) {
-                builder.append(", ");
-            }
-            builder.append(constant.name());
-        }
-        return builder.toString();
-    }
 }

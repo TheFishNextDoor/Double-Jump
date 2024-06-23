@@ -17,6 +17,7 @@ public class Settings {
     public final double FALL_DAMAGE_REDUCTION;
     public final HashSet<String> DISABLE_ON_COMMAND = new HashSet<>();
     public final Sound SOUND;
+    public final boolean SOUND_ENABLED;
     public final float SOUND_VOLUME;
     public final float SOUND_PITCH;
 
@@ -33,8 +34,8 @@ public class Settings {
         if (SOUND == null && !soundName.isEmpty()) {
             Logger logger = plugin.getLogger();
             logger.warning("Invalid sound name: " + soundName);
-            logger.warning("Valid sound names: " + EnumTools.allStrings(Sound.class));
         }
+        SOUND_ENABLED = config.getBoolean("sound.enabled") && SOUND != null;
         SOUND_VOLUME = (float) config.getDouble("sound.volume");
         SOUND_PITCH = (float) config.getDouble("sound.pitch");
     }
