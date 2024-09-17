@@ -1,6 +1,6 @@
 main: com.thefishnextdoor.jump.DoubleJump
 name: DoubleJump
-version: 1.0.0
+version: 1.0.1
 api-version: 1.15
 author: TheFishNextDoor
 description: Jump then jump again

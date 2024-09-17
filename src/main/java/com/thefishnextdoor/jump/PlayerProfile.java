@@ -21,6 +21,8 @@ public class PlayerProfile {
 
     private boolean doubleJumpReady = false;
 
+    private boolean wasOnGround = true;
+
     public PlayerProfile(Player player) {
         if (player == null) {
             throw new IllegalArgumentException("Player cannot be null");
@@ -66,6 +68,13 @@ public class PlayerProfile {
 
     public void setDoubleJumpReady(boolean doubleJumpReady) {
         this.doubleJumpReady = doubleJumpReady;
+    }
+
+    public boolean hitTheGroundInFlyMode(Player player) {
+        boolean isOnGround = player.isOnGround();
+        boolean hitTheGroundInFlyMode = !this.wasOnGround && isOnGround && player.getAllowFlight() && isDoubleJumpReady();
+        this.wasOnGround = isOnGround;
+        return hitTheGroundInFlyMode;
     }
 
     private void setDoubleJumpStatus() {
