@@ -47,8 +47,8 @@ public class PlayerMove implements Listener {
 
     private int getFeatherFallLevel(Player player) {
         ItemStack boots = player.getEquipment().getBoots();
-        if (boots != null && boots.hasItemMeta() && boots.getItemMeta().hasEnchant(Enchantment.PROTECTION_FALL)) {
-            return boots.getEnchantmentLevel(Enchantment.PROTECTION_FALL);
+        if (boots != null && boots.hasItemMeta() && boots.getItemMeta().hasEnchant(Enchantment.FEATHER_FALLING)) {
+            return boots.getEnchantmentLevel(Enchantment.FEATHER_FALLING);
         }
         return 0;
     }

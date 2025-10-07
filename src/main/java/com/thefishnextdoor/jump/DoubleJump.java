@@ -19,7 +19,8 @@ public class DoubleJump extends JavaPlugin {
     private static Settings settings;
 
     public void onEnable() {
-        load();
+        loadConfig();
+
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new PlayerMove(), this);
         pluginManager.registerEvents(new PlayerToggleFlight(), this);
@@ -27,7 +28,9 @@ public class DoubleJump extends JavaPlugin {
         pluginManager.registerEvents(new PlayerQuit(), this);
         pluginManager.registerEvents(new PlayerChangedWorld(), this);
         pluginManager.registerEvents(new PlayerCommandPreprocess(), this);
+
         registerCommand("doublejump", new DoubleJumpCommand(this));
+        
         getLogger().info("Plugin enabled");
     }
 
@@ -35,7 +38,7 @@ public class DoubleJump extends JavaPlugin {
         getLogger().info("Plugin disabled");
     }
 
-    public void load() {
+    public void loadConfig() {
         settings = new Settings(this);
     }
 

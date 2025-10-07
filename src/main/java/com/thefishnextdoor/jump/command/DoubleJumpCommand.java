@@ -58,7 +58,7 @@ public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
                 enableDoubleJump = false;
             }
             else if (args[0].equalsIgnoreCase("reload") && player.hasPermission(RELOAD_PERMISSION)) {
-                instance.load();
+                instance.loadConfig();
                 player.sendMessage(ChatColor.GREEN + "Plugin Reloaded");
                 return true;
             }

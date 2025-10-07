@@ -1,6 +1,8 @@
 package com.thefishnextdoor.jump.event;
 
 import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,8 +30,10 @@ public class PlayerToggleFlight implements Listener {
             playerProfile.setDoubleJumpReady(false);
             event.setCancelled(true);
             player.setAllowFlight(false);
-            if (settings.SOUND_ENABLED && settings.SOUND != null) {
-                player.getWorld().playSound(player.getLocation(), settings.SOUND, (float) settings.SOUND_VOLUME, (float) settings.SOUND_PITCH);
+            if (settings.SOUND_ENABLED && settings.SOUND.isPresent()) {
+                World world = player.getWorld();
+                Location location = player.getLocation();
+                world.playSound(location, settings.SOUND.get(), (float) settings.SOUND_VOLUME, (float) settings.SOUND_PITCH);
             }
         }
     }
