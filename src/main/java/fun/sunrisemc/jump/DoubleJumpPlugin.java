@@ -23,6 +23,8 @@ public class DoubleJumpPlugin extends JavaPlugin {
     private static MainConfig mainConfig;
 
     public void onEnable() {
+        instance = this;
+        
         loadMainConfig();
 
         PluginManager pluginManager = getServer().getPluginManager();
