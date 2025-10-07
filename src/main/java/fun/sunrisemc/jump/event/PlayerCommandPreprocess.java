@@ -12,7 +12,7 @@ public class PlayerCommandPreprocess implements Listener {
     @EventHandler
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
         String message = event.getMessage().toLowerCase().replaceFirst("/", "");
-        if (DoubleJumpPlugin.getSettings().DISABLE_ON_COMMAND.contains(message)) {
+        if (DoubleJumpPlugin.getMainConfig().DISABLE_ON_COMMAND.contains(message)) {
             PlayerProfile.get(event.getPlayer()).setWantsDoubleJump(false);
         }
     }

@@ -19,7 +19,7 @@ public class PlayerMove implements Listener {
         PlayerProfile playerProfile = PlayerProfile.get(player);
         if (playerProfile.hitTheGroundInFlyMode(player)) {
             double damage = ((player.getFallDistance() - 3.0) * 0.9);
-            damage -= DoubleJumpPlugin.getSettings().FALL_DAMAGE_REDUCTION;
+            damage -= DoubleJumpPlugin.getMainConfig().FALL_DAMAGE_REDUCTION;
             damage *= getFeatherFallMultiplier(player);
             if (damage > 0 && player.getWorld().getGameRuleValue(GameRule.FALL_DAMAGE)) {
                 player.damage(damage);

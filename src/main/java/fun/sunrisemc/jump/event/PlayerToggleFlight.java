@@ -25,7 +25,7 @@ public class PlayerToggleFlight implements Listener {
         }
         PlayerProfile playerProfile = PlayerProfile.get(player);
         if (playerProfile.isDoubleJumpReady()) {
-            MainConfig settings = DoubleJumpPlugin.getSettings();
+            MainConfig settings = DoubleJumpPlugin.getMainConfig();
             player.setVelocity(player.getLocation().getDirection().multiply(settings.FORWARD_VELOCITY).setY(settings.UP_VELOCITY));
             playerProfile.setDoubleJumpReady(false);
             event.setCancelled(true);

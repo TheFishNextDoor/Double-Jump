@@ -27,7 +27,7 @@ public class EntityDamage implements Listener {
             return;
         }
         double damage = event.getDamage();
-        damage -= DoubleJumpPlugin.getSettings().FALL_DAMAGE_REDUCTION;
+        damage -= DoubleJumpPlugin.getMainConfig().FALL_DAMAGE_REDUCTION;
         if (damage <= 0.0) {
             event.setCancelled(true);
         }

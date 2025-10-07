@@ -5,6 +5,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import fun.sunrisemc.jump.command.DoubleJumpCommand;
 import fun.sunrisemc.jump.config.MainConfig;
@@ -17,10 +18,12 @@ import fun.sunrisemc.jump.event.PlayerToggleFlight;
 
 public class DoubleJumpPlugin extends JavaPlugin {
 
-    private static MainConfig settings;
+    private static DoubleJumpPlugin instance;
+
+    private static MainConfig mainConfig;
 
     public void onEnable() {
-        loadConfig();
+        loadMainConfig();
 
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new PlayerMove(), this);
@@ -32,36 +35,50 @@ public class DoubleJumpPlugin extends JavaPlugin {
 
         registerCommand("doublejump", new DoubleJumpCommand(this));
         
-        getLogger().info("Plugin enabled");
+        logInfo("Plugin enabled");
     }
 
     public void onDisable() {
-        getLogger().info("Plugin disabled");
+        logInfo("Plugin disabled");
     }
 
-    public void loadConfig() {
-        settings = new MainConfig(this);
+    public static void logInfo(@NonNull String message) {
+        getInstance().getLogger().info(message);
     }
 
-    public static MainConfig getSettings() {
-        return settings;
+    public static void logWarning(@NonNull String message) {
+        getInstance().getLogger().warning(message);
     }
 
-    private void registerCommand(String commandName, CommandExecutor commandHandler) {
-        if (commandName == null) {
-            throw new IllegalArgumentException("commandName cannot be null");
-        }
-        if (commandHandler == null) {
-            throw new IllegalArgumentException("commandHandler cannot be null");
-        }
+    public static void logSevere(@NonNull String message) {
+        getInstance().getLogger().severe(message);
+    }
+
+    public static DoubleJumpPlugin getInstance() {
+        return instance;
+    }
+
+    public static MainConfig getMainConfig() {
+        return mainConfig;
+    }
+
+    public static void loadMainConfig() {
+        mainConfig = new MainConfig(instance);
+    }
+
+    private boolean registerCommand(@NonNull String commandName, @NonNull CommandExecutor commandExecutor) {
         PluginCommand command = getCommand(commandName);
         if (command == null) {
-            getLogger().warning("Failed to register command: " + commandName);
-            return;
+            logSevere("Command '" + commandName + "' not found in plugin.yml.");
+            return false;
         }
-        command.setExecutor(commandHandler);
-        if (commandHandler instanceof TabCompleter) {
-            command.setTabCompleter((TabCompleter) commandHandler);
+
+        command.setExecutor(commandExecutor);
+
+        if (commandExecutor instanceof TabCompleter) {
+            command.setTabCompleter((TabCompleter) commandExecutor);
         }
+
+        return true;
     }
 }
