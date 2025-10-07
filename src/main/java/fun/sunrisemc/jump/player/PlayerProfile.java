@@ -69,7 +69,7 @@ public class PlayerProfile {
         this.doubleJumpReady = doubleJumpReady;
     }
 
-    public boolean hitTheGroundInFlyMode(Player player) {
+    public boolean hitTheGroundInFlyMode(@NonNull Player player) {
         boolean isOnGround = PlayerUtils.isOnGround(player);
         boolean hitTheGroundInFlyMode = !this.wasOnGround && isOnGround && player.getAllowFlight() && isDoubleJumpReady();
         this.wasOnGround = isOnGround;
