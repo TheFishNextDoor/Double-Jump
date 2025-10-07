@@ -5,7 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
-import fun.sunrisemc.jump.player.PlayerProfile;
+import fun.sunrisemc.jump.player.PlayerProfileManager;
 
 public class PlayerCommandPreprocess implements Listener {
     
@@ -13,7 +13,7 @@ public class PlayerCommandPreprocess implements Listener {
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
         String message = event.getMessage().toLowerCase().replaceFirst("/", "");
         if (DoubleJumpPlugin.getMainConfig().DISABLE_ON_COMMAND.contains(message)) {
-            PlayerProfile.get(event.getPlayer()).setWantsDoubleJump(false);
+            PlayerProfileManager.get(event.getPlayer()).setWantsDoubleJump(false);
         }
     }
 }

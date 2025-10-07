@@ -9,6 +9,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
 import fun.sunrisemc.jump.player.PlayerProfile;
+import fun.sunrisemc.jump.player.PlayerProfileManager;
 
 public class EntityDamage implements Listener {
 
@@ -22,7 +23,7 @@ public class EntityDamage implements Listener {
             return;
         }
         Player player = (Player) entity;
-        PlayerProfile playerProfile = PlayerProfile.get(player);
+        PlayerProfile playerProfile = PlayerProfileManager.get(player);
         if (!playerProfile.doubleJumpEnabled()) {
             return;
         }

@@ -2,8 +2,6 @@ package fun.sunrisemc.jump.config;
 
 import java.util.HashSet;
 import java.util.Optional;
-import java.util.logging.Logger;
-
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,8 +21,8 @@ public class MainConfig {
     public final float SOUND_VOLUME;
     public final float SOUND_PITCH;
 
-    public MainConfig(DoubleJumpPlugin plugin) {
-        FileConfiguration config = getPluginConfig(plugin);
+    public MainConfig() {
+        FileConfiguration config = getPluginConfig(DoubleJumpPlugin.getInstance());
         ENABLED_BY_DEFAULT = config.getBoolean("enabled-by-default");
         FORWARD_VELOCITY = config.getDouble("forward-velocity");
         UP_VELOCITY = config.getDouble("up-velocity");
@@ -34,8 +32,7 @@ public class MainConfig {
         String soundName = config.getString("sound.name");
         SOUND = RegistryUtils.getSoundByName(soundName);
         if (SOUND.isEmpty() && !soundName.isEmpty()) {
-            Logger logger = plugin.getLogger();
-            logger.warning("Invalid sound name: " + soundName);
+            DoubleJumpPlugin.logWarning("Invalid sound name: " + soundName);
         }
         SOUND_ENABLED = config.getBoolean("sound.enabled") && SOUND.isPresent();
         SOUND_VOLUME = (float) config.getDouble("sound.volume");

@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
 import fun.sunrisemc.jump.player.PlayerProfile;
+import fun.sunrisemc.jump.player.PlayerProfileManager;
 import net.md_5.bungee.api.ChatColor;
 
 public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
@@ -44,7 +45,7 @@ public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         Player player = (Player) sender;
-        PlayerProfile playerProfile = PlayerProfile.get(player);
+        PlayerProfile playerProfile = PlayerProfileManager.get(player);
         boolean enableDoubleJump;
         if (args.length == 0) {
             enableDoubleJump = !playerProfile.wantsDoubleJump();

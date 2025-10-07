@@ -63,7 +63,7 @@ public class DoubleJumpPlugin extends JavaPlugin {
     }
 
     public static void loadMainConfig() {
-        mainConfig = new MainConfig(instance);
+        mainConfig = new MainConfig();
     }
 
     private boolean registerCommand(@NonNull String commandName, @NonNull CommandExecutor commandExecutor) {

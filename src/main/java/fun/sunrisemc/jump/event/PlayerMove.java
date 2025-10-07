@@ -10,13 +10,14 @@ import org.bukkit.inventory.ItemStack;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
 import fun.sunrisemc.jump.player.PlayerProfile;
+import fun.sunrisemc.jump.player.PlayerProfileManager;
 
 public class PlayerMove implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
-        PlayerProfile playerProfile = PlayerProfile.get(player);
+        PlayerProfile playerProfile = PlayerProfileManager.get(player);
         if (playerProfile.hitTheGroundInFlyMode(player)) {
             double damage = ((player.getFallDistance() - 3.0) * 0.9);
             damage -= DoubleJumpPlugin.getMainConfig().FALL_DAMAGE_REDUCTION;

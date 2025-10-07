@@ -11,6 +11,7 @@ import org.bukkit.event.player.PlayerToggleFlightEvent;
 import fun.sunrisemc.jump.DoubleJumpPlugin;
 import fun.sunrisemc.jump.config.MainConfig;
 import fun.sunrisemc.jump.player.PlayerProfile;
+import fun.sunrisemc.jump.player.PlayerProfileManager;
 
 public class PlayerToggleFlight implements Listener {
 
@@ -23,7 +24,7 @@ public class PlayerToggleFlight implements Listener {
         if (player.getGameMode() != GameMode.SURVIVAL && player.getGameMode() != GameMode.ADVENTURE) {
             return;
         }
-        PlayerProfile playerProfile = PlayerProfile.get(player);
+        PlayerProfile playerProfile = PlayerProfileManager.get(player);
         if (playerProfile.isDoubleJumpReady()) {
             MainConfig settings = DoubleJumpPlugin.getMainConfig();
             player.setVelocity(player.getLocation().getDirection().multiply(settings.FORWARD_VELOCITY).setY(settings.UP_VELOCITY));
