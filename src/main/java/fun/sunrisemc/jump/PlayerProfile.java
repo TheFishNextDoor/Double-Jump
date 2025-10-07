@@ -1,4 +1,4 @@
-package com.thefishnextdoor.jump;
+package fun.sunrisemc.jump;
 
 import java.util.HashMap;
 import java.util.Optional;
@@ -28,7 +28,7 @@ public class PlayerProfile {
             throw new IllegalArgumentException("Player cannot be null");
         }
         this.uuid = player.getUniqueId();
-        this.wantsDoubleJump = !player.isFlying() && DoubleJump.getSettings().ENABLED_BY_DEFAULT;
+        this.wantsDoubleJump = !player.isFlying() && DoubleJumpPlugin.getSettings().ENABLED_BY_DEFAULT;
         checkPermissions();
         playerProfiles.put(uuid, this);
     }

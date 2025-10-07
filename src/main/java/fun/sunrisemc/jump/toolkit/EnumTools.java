@@ -1,4 +1,4 @@
-package com.thefishnextdoor.jump.toolkit;
+package fun.sunrisemc.jump.toolkit;
 
 public class EnumTools {
 

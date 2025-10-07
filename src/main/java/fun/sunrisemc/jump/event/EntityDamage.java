@@ -1,4 +1,4 @@
-package com.thefishnextdoor.jump.event;
+package fun.sunrisemc.jump.event;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -7,8 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
-import com.thefishnextdoor.jump.DoubleJump;
-import com.thefishnextdoor.jump.PlayerProfile;
+import fun.sunrisemc.jump.DoubleJumpPlugin;
+import fun.sunrisemc.jump.PlayerProfile;
 
 public class EntityDamage implements Listener {
 
@@ -27,7 +27,7 @@ public class EntityDamage implements Listener {
             return;
         }
         double damage = event.getDamage();
-        damage -= DoubleJump.getSettings().FALL_DAMAGE_REDUCTION;
+        damage -= DoubleJumpPlugin.getSettings().FALL_DAMAGE_REDUCTION;
         if (damage <= 0.0) {
             event.setCancelled(true);
         }

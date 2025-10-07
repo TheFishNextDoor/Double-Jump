@@ -1,10 +1,10 @@
-package com.thefishnextdoor.jump.event;
+package fun.sunrisemc.jump.event;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 
-import com.thefishnextdoor.jump.PlayerProfile;
+import fun.sunrisemc.jump.PlayerProfile;
 
 public class PlayerChangedWorld implements Listener {
 

@@ -1,4 +1,4 @@
-package com.thefishnextdoor.jump.event;
+package fun.sunrisemc.jump.event;
 
 import org.bukkit.GameRule;
 import org.bukkit.enchantments.Enchantment;
@@ -8,8 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.thefishnextdoor.jump.DoubleJump;
-import com.thefishnextdoor.jump.PlayerProfile;
+import fun.sunrisemc.jump.DoubleJumpPlugin;
+import fun.sunrisemc.jump.PlayerProfile;
 
 public class PlayerMove implements Listener {
 
@@ -19,7 +19,7 @@ public class PlayerMove implements Listener {
         PlayerProfile playerProfile = PlayerProfile.get(player);
         if (playerProfile.hitTheGroundInFlyMode(player)) {
             double damage = ((player.getFallDistance() - 3.0) * 0.9);
-            damage -= DoubleJump.getSettings().FALL_DAMAGE_REDUCTION;
+            damage -= DoubleJumpPlugin.getSettings().FALL_DAMAGE_REDUCTION;
             damage *= getFeatherFallMultiplier(player);
             if (damage > 0 && player.getWorld().getGameRuleValue(GameRule.FALL_DAMAGE)) {
                 player.damage(damage);

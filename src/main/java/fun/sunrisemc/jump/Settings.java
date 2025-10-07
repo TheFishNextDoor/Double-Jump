@@ -1,4 +1,4 @@
-package com.thefishnextdoor.jump;
+package fun.sunrisemc.jump;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.thefishnextdoor.jump.toolkit.RegistryUtils;
+import fun.sunrisemc.jump.toolkit.RegistryUtils;
 
 public class Settings {
 
@@ -22,7 +22,7 @@ public class Settings {
     public final float SOUND_VOLUME;
     public final float SOUND_PITCH;
 
-    public Settings(DoubleJump plugin) {
+    public Settings(DoubleJumpPlugin plugin) {
         FileConfiguration config = getPluginConfig(plugin);
         ENABLED_BY_DEFAULT = config.getBoolean("enabled-by-default");
         FORWARD_VELOCITY = config.getDouble("forward-velocity");

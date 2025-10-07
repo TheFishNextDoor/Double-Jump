@@ -1,4 +1,4 @@
-package com.thefishnextdoor.jump;
+package fun.sunrisemc.jump;
 
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
@@ -6,15 +6,15 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.thefishnextdoor.jump.command.DoubleJumpCommand;
-import com.thefishnextdoor.jump.event.EntityDamage;
-import com.thefishnextdoor.jump.event.PlayerChangedWorld;
-import com.thefishnextdoor.jump.event.PlayerCommandPreprocess;
-import com.thefishnextdoor.jump.event.PlayerMove;
-import com.thefishnextdoor.jump.event.PlayerQuit;
-import com.thefishnextdoor.jump.event.PlayerToggleFlight;
+import fun.sunrisemc.jump.command.DoubleJumpCommand;
+import fun.sunrisemc.jump.event.EntityDamage;
+import fun.sunrisemc.jump.event.PlayerChangedWorld;
+import fun.sunrisemc.jump.event.PlayerCommandPreprocess;
+import fun.sunrisemc.jump.event.PlayerMove;
+import fun.sunrisemc.jump.event.PlayerQuit;
+import fun.sunrisemc.jump.event.PlayerToggleFlight;
 
-public class DoubleJump extends JavaPlugin {
+public class DoubleJumpPlugin extends JavaPlugin {
 
     private static Settings settings;
 
