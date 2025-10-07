@@ -7,10 +7,10 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
+import fun.sunrisemc.jump.file.ConfigFile;
 
 public class MainConfig {
 
@@ -25,7 +25,8 @@ public class MainConfig {
     public final float SOUND_PITCH;
 
     public MainConfig() {
-        FileConfiguration config = getPluginConfig(DoubleJumpPlugin.getInstance());
+        FileConfiguration config = ConfigFile.get("config", true);
+
         ENABLED_BY_DEFAULT = config.getBoolean("enabled-by-default");
         FORWARD_VELOCITY = config.getDouble("forward-velocity");
         UP_VELOCITY = config.getDouble("up-velocity");
@@ -40,14 +41,6 @@ public class MainConfig {
         SOUND_ENABLED = config.getBoolean("sound.enabled") && SOUND.isPresent();
         SOUND_VOLUME = (float) config.getDouble("sound.volume");
         SOUND_PITCH = (float) config.getDouble("sound.pitch");
-    }
-
-    private static FileConfiguration getPluginConfig(JavaPlugin plugin) {
-        plugin.saveDefaultConfig();
-        plugin.reloadConfig();
-        plugin.getConfig().options().copyDefaults(true);
-        plugin.saveConfig();
-        return plugin.getConfig();
     }
 
     private static Optional<Sound> getSoundByName(@NonNull String soundName) {
