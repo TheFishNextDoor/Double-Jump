@@ -2,12 +2,15 @@ package fun.sunrisemc.jump.config;
 
 import java.util.HashSet;
 import java.util.Optional;
+
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
-import fun.sunrisemc.jump.utils.RegistryUtils;
 
 public class MainConfig {
 
@@ -30,7 +33,7 @@ public class MainConfig {
         DISABLE_ON_COMMAND.addAll(config.getStringList("disable-on-command"));
         
         String soundName = config.getString("sound.name");
-        SOUND = RegistryUtils.getSoundByName(soundName);
+        SOUND = getSoundByName(soundName);
         if (SOUND.isEmpty() && !soundName.isEmpty()) {
             DoubleJumpPlugin.logWarning("Invalid sound name: " + soundName);
         }
@@ -45,5 +48,14 @@ public class MainConfig {
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
         return plugin.getConfig();
+    }
+
+    private static Optional<Sound> getSoundByName(@NonNull String soundName) {
+        String formattedSoundName = soundName.toLowerCase().replace('_', '.');
+        NamespacedKey key = NamespacedKey.fromString(formattedSoundName);
+        if (key == null) {
+            return Optional.empty();
+        }
+        return Optional.ofNullable(Registry.SOUNDS.get(key));
     }
 }
