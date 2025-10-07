@@ -37,11 +37,11 @@ public class DoubleJumpPlugin extends JavaPlugin {
 
         registerCommand("doublejump", new DoubleJumpCommand());
         
-        logInfo("Plugin enabled");
+        logInfo("Plugin enabled.");
     }
 
     public void onDisable() {
-        logInfo("Plugin disabled");
+        logInfo("Plugin disabled.");
     }
 
     public static void logInfo(@NonNull String message) {
