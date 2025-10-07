@@ -1,4 +1,4 @@
-package fun.sunrisemc.jump;
+package fun.sunrisemc.jump.player;
 
 import java.util.HashMap;
 import java.util.Optional;
@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import fun.sunrisemc.jump.DoubleJumpPlugin;
 
 public class PlayerProfile {
 

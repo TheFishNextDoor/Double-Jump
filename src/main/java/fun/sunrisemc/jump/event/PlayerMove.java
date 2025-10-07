@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
-import fun.sunrisemc.jump.PlayerProfile;
+import fun.sunrisemc.jump.player.PlayerProfile;
 
 public class PlayerMove implements Listener {
 

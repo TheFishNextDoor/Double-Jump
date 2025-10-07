@@ -1,4 +1,4 @@
-package fun.sunrisemc.jump.toolkit;
+package fun.sunrisemc.jump.utils;
 
 import java.util.Optional;
 

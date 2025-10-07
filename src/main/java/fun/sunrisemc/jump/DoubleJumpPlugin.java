@@ -7,6 +7,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fun.sunrisemc.jump.command.DoubleJumpCommand;
+import fun.sunrisemc.jump.config.MainConfig;
 import fun.sunrisemc.jump.event.EntityDamage;
 import fun.sunrisemc.jump.event.PlayerChangedWorld;
 import fun.sunrisemc.jump.event.PlayerCommandPreprocess;
@@ -16,7 +17,7 @@ import fun.sunrisemc.jump.event.PlayerToggleFlight;
 
 public class DoubleJumpPlugin extends JavaPlugin {
 
-    private static Settings settings;
+    private static MainConfig settings;
 
     public void onEnable() {
         loadConfig();
@@ -39,10 +40,10 @@ public class DoubleJumpPlugin extends JavaPlugin {
     }
 
     public void loadConfig() {
-        settings = new Settings(this);
+        settings = new MainConfig(this);
     }
 
-    public static Settings getSettings() {
+    public static MainConfig getSettings() {
         return settings;
     }
 

@@ -10,8 +10,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
-import fun.sunrisemc.jump.PlayerProfile;
-
+import fun.sunrisemc.jump.player.PlayerProfile;
 import net.md_5.bungee.api.ChatColor;
 
 public class DoubleJumpCommand implements CommandExecutor, TabCompleter {

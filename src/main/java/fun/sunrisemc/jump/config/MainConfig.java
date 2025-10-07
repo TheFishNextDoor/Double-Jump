@@ -1,4 +1,4 @@
-package fun.sunrisemc.jump;
+package fun.sunrisemc.jump.config;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -8,9 +8,10 @@ import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import fun.sunrisemc.jump.toolkit.RegistryUtils;
+import fun.sunrisemc.jump.DoubleJumpPlugin;
+import fun.sunrisemc.jump.utils.RegistryUtils;
 
-public class Settings {
+public class MainConfig {
 
     public final boolean ENABLED_BY_DEFAULT;
     public final double FORWARD_VELOCITY;
@@ -22,7 +23,7 @@ public class Settings {
     public final float SOUND_VOLUME;
     public final float SOUND_PITCH;
 
-    public Settings(DoubleJumpPlugin plugin) {
+    public MainConfig(DoubleJumpPlugin plugin) {
         FileConfiguration config = getPluginConfig(plugin);
         ENABLED_BY_DEFAULT = config.getBoolean("enabled-by-default");
         FORWARD_VELOCITY = config.getDouble("forward-velocity");

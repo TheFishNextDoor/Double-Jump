@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
-import fun.sunrisemc.jump.PlayerProfile;
+import fun.sunrisemc.jump.player.PlayerProfile;
 
 public class EntityDamage implements Listener {
 

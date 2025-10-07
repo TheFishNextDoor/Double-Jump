@@ -9,8 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
-import fun.sunrisemc.jump.PlayerProfile;
-import fun.sunrisemc.jump.Settings;
+import fun.sunrisemc.jump.config.MainConfig;
+import fun.sunrisemc.jump.player.PlayerProfile;
 
 public class PlayerToggleFlight implements Listener {
 
@@ -25,7 +25,7 @@ public class PlayerToggleFlight implements Listener {
         }
         PlayerProfile playerProfile = PlayerProfile.get(player);
         if (playerProfile.isDoubleJumpReady()) {
-            Settings settings = DoubleJumpPlugin.getSettings();
+            MainConfig settings = DoubleJumpPlugin.getSettings();
             player.setVelocity(player.getLocation().getDirection().multiply(settings.FORWARD_VELOCITY).setY(settings.UP_VELOCITY));
             playerProfile.setDoubleJumpReady(false);
             event.setCancelled(true);
