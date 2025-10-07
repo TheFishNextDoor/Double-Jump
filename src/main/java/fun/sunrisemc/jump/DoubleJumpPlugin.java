@@ -33,7 +33,7 @@ public class DoubleJumpPlugin extends JavaPlugin {
         pluginManager.registerEvents(new PlayerChangedWorld(), this);
         pluginManager.registerEvents(new PlayerCommandPreprocess(), this);
 
-        registerCommand("doublejump", new DoubleJumpCommand(this));
+        registerCommand("doublejump", new DoubleJumpCommand());
         
         logInfo("Plugin enabled");
     }

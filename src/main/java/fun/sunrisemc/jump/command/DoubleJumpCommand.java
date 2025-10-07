@@ -18,12 +18,6 @@ public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
 
     public final String RELOAD_PERMISSION = "doublejump.reload";
 
-    private final DoubleJumpPlugin instance;
-
-    public DoubleJumpCommand(DoubleJumpPlugin instance) {
-        this.instance = instance;
-    }
-
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
@@ -58,7 +52,7 @@ public class DoubleJumpCommand implements CommandExecutor, TabCompleter {
                 enableDoubleJump = false;
             }
             else if (args[0].equalsIgnoreCase("reload") && player.hasPermission(RELOAD_PERMISSION)) {
-                instance.loadMainConfig();
+                DoubleJumpPlugin.loadMainConfig();
                 player.sendMessage(ChatColor.GREEN + "Plugin Reloaded");
                 return true;
             }

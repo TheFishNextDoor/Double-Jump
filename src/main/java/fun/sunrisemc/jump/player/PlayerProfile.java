@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import fun.sunrisemc.jump.DoubleJumpPlugin;
+import fun.sunrisemc.jump.utils.PlayerUtils;
 
 public class PlayerProfile {
 
@@ -69,7 +70,7 @@ public class PlayerProfile {
     }
 
     public boolean hitTheGroundInFlyMode(Player player) {
-        boolean isOnGround = player.isOnGround();
+        boolean isOnGround = PlayerUtils.isOnGround(player);
         boolean hitTheGroundInFlyMode = !this.wasOnGround && isOnGround && player.getAllowFlight() && isDoubleJumpReady();
         this.wasOnGround = isOnGround;
         return hitTheGroundInFlyMode;

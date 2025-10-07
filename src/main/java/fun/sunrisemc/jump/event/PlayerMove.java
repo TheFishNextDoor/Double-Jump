@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import fun.sunrisemc.jump.DoubleJumpPlugin;
 import fun.sunrisemc.jump.player.PlayerProfile;
 import fun.sunrisemc.jump.player.PlayerProfileManager;
+import fun.sunrisemc.jump.utils.PlayerUtils;
 
 public class PlayerMove implements Listener {
 
@@ -31,7 +32,7 @@ public class PlayerMove implements Listener {
                 player.setAllowFlight(true);
             }
         }
-        else if (player.isOnGround()) {
+        else if (PlayerUtils.isOnGround(player)) {
             playerProfile.setDoubleJumpReady(true);
         }
     }
